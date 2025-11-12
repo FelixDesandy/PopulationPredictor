@@ -32,10 +32,10 @@ col1, col2, col3 = st.columns(3)
 with col1:
     population = st.number_input("Population (2020)", min_value=0, value=10000000)
     land_area = st.number_input("Land Area (Km²)", min_value=0, value=50000)
-    net_change = st.number_input("Net Change", value=10000)
+    # Net Change input removed
 
 with col2:
-    yearly_change = st.slider("Yearly Change (%)", min_value=-5.0, max_value=10.0, value=0.5, step=0.1, format="%.2f")
+    # Yearly Change slider removed
     migrants_net = st.number_input("Migrants (net)", value=0)
     fert_rate = st.slider("Fert. Rate", min_value=0.0, max_value=8.0, value=2.0, step=0.1, format="%.1f")
 
@@ -51,16 +51,15 @@ if st.button("🚀 Predict Now!"):
         
         # --- Data Preprocessing ---
         # Convert percentages to decimals (as they were likely trained)
-        yearly_change_processed = yearly_change / 100.0
+        # yearly_change_processed removed
         urban_pop_percent_processed = urban_pop_percent / 100.0
         world_share_processed = world_share / 100.0
         
         # Create DataFrame with all features in the correct order
+        # Removed 'Yearly Change' and 'Net Change'
         input_data = pd.DataFrame({
             'Population (2020)': [population],
             'Land Area (Km²)': [land_area],
-            'Yearly Change': [yearly_change_processed],
-            'Net Change': [net_change],
             'Migrants (net)': [migrants_net],
             'Fert. Rate': [fert_rate],
             'Med. Age': [med_age],
